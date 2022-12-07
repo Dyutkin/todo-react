@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### deploy `https://todo-react-9dd41.web.app/`
 ### `npm start`
 
 Runs the app in the development mode.\

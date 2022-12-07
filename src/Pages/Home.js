@@ -25,7 +25,6 @@ const Home = () => {
         fetchNotes();
     };
 
-
     return (
         <>
             <Form />
