@@ -1,14 +1,26 @@
 import React, { useContext, useState } from "react";
 import {AlertContext} from "../context/alert/alertContext";
+import {FirebaseContext} from "../context/firebase/fireBaseContext";
 
 export const Form = () => {
     const [value, setValue] = useState("");
     const alert = useContext(AlertContext);
+    const firebase = useContext(FirebaseContext);
 
     const submitHandler = event => {
         event.preventDefault();
-        alert.showAlert(value, "success");
-    };
+        if(value.trim()) {
+            firebase.addNote(value.trim()).then(() => {
+                firebase.fetchNotes();
+                alert.showAlert("successfully add to base", "success");
+            }).catch(() => {
+                alert.showAlert("error while add to base", "danger");
+            });
+        } else {
+            alert.showAlert("error - nothing to add", "warning");
+        }
+        setValue("");
+    };     
     
     return (
         <form onSubmit={submitHandler}>
@@ -21,6 +33,6 @@ export const Form = () => {
                     onChange={e=>{setValue(e.target.value);}}
                 />
             </div>
-        </form>
+        </form> 
     );
 };

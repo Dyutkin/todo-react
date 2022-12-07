@@ -8,7 +8,7 @@ const Alert = () => {
     if (!alert.visible) return null;
     return (
         <div className={`alert alert-${alert.type || "warning"} alert-dismissible`}>
-            <strong>Внимание!</strong>
+            <strong>Внимание! </strong>
             {alert.text}
             <button type="button" onClick={hideAlert} className="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
